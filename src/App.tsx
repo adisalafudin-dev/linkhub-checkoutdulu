@@ -36,7 +36,7 @@ const PROFILE = {
   name: "checkoutdulu",
   username: "@checkoutaja_dulu",
   bio: "Racun Shopee worth it per budget 🛒 | Rekomendasi di bawah 20rb, 50rb, & 100rb",
-  avatar: "../src/assets/logo_checkoutdulu.png",
+  avatar: "./assets/logo_checkoutdulu.png",
   threadsUrl: "https://www.threads.net/@checkoutaja_dulu",
 };
 
