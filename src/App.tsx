@@ -30,9 +30,10 @@ type Product = {
 const PRODUCTS: Product[] = [
   {
     id: 1,
-    name: "Kopi Kenangan",
-    price: 15000,
-    image: "https://cf.shopee.co.id/file/1e3f4c5b6a7b8c9d0e1f2g3h4i5j6k7l",
+    name: "Kapal Api Super, 10Pcs",
+    price: 14450,
+    image:
+      "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mtxccgz28vly84@resize_w450_nl.webp",
     shopeeUrl: "https://s.shopee.co.id/3LSALz7WgN",
   },
 ];
