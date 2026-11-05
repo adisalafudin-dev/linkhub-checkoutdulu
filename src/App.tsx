@@ -27,7 +27,15 @@ type Product = {
   shopeeUrl: string;
 };
 
-const PRODUCTS: Product[] = [];
+const PRODUCTS: Product[] = [
+  {
+    id: 1,
+    name: "Kopi Kenangan",
+    price: 15000,
+    image: "https://cf.shopee.co.id/file/1e3f4c5b6a7b8c9d0e1f2g3h4i5j6k7l",
+    shopeeUrl: "https://s.shopee.co.id/3LSALz7WgN",
+  },
+];
 
 /* ============================================================
    PROFIL
@@ -37,7 +45,7 @@ const PROFILE = {
   username: "@checkoutaja_dulu",
   bio: "Racun Shopee worth it per budget 🛒 | Rekomendasi di bawah 20rb, 50rb, & 100rb",
   avatar: "/logo_checkoutdulu.png",
-  threadsUrl: "https://www.threads.net/@checkoutaja_dulu",
+  threadsUrl: "https://www.threads.com/@checkoutdulu__",
 };
 
 /* ============================================================
@@ -205,10 +213,7 @@ export default function App() {
 
         {/* Footer */}
         <footer className="mt-12 space-y-1 text-center text-xs text-muted-foreground">
-          <p>
-            Beberapa link adalah link afiliasi. Harga bisa berubah
-            sewaktu-waktu.
-          </p>
+          <p>Link mengandung afiliasi, harga tidak berubah untukmu</p>
           <p>
             © {new Date().getFullYear()} {PROFILE.name}
           </p>
