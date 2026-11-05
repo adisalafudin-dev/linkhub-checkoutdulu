@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import logoCheckoutdulu from "./assets/logo_checkoutdulu.png";
 
 /* ============================================================
    DATA PRODUK — EDIT DI SINI
@@ -36,7 +37,7 @@ const PROFILE = {
   name: "checkoutdulu",
   username: "@checkoutaja_dulu",
   bio: "Racun Shopee worth it per budget 🛒 | Rekomendasi di bawah 20rb, 50rb, & 100rb",
-  avatar: "./assets/logo_checkoutdulu.png",
+  avatar: logoCheckoutdulu,
   threadsUrl: "https://www.threads.net/@checkoutaja_dulu",
 };
 
