@@ -33,7 +33,7 @@ const PRODUCTS: Product[] = [
     name: "Kapal Api Super, 10Pcs",
     price: 14450,
     image:
-      "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mtxccgz28vly84@resize_w450_nl.webp",
+      "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mtopkv9b8ykmd2@resize_w450_nl.webp",
     shopeeUrl: "https://s.shopee.co.id/3LSALz7WgN",
   },
 
@@ -61,7 +61,7 @@ const PRODUCTS: Product[] = [
 const PROFILE = {
   name: "checkoutdulu",
   username: "@checkoutaja_dulu",
-  bio: "Racun Shopee worth it per budget 🛒 | Rekomendasi di bawah 20rb, 50rb, & 100rb",
+  bio: "Racun Shopee worth it per budget 🛒 | Rekomendasi di bawah 20rb, 50rb, & 200rb",
   avatar: "/logo_checkoutdulu.png",
   threadsUrl: "https://www.threads.com/@checkoutdulu__",
 };
@@ -69,13 +69,14 @@ const PROFILE = {
 /* ============================================================
    HELPER
    ============================================================ */
-type Tier = "20" | "50" | "100";
+type Tier = "20" | "50" | "100" | "200";
 type Filter = "all" | Tier;
 
 const TIER_LABEL: Record<Tier, string> = {
   "20": "< 20rb",
   "50": "< 50rb",
   "100": "< 100rb",
+  "200": "< 200rb",
 };
 
 // Kategori eksklusif: <20rb | 20–49rb | 50–99rb
@@ -83,6 +84,7 @@ const getTier = (price: number): Tier | null => {
   if (price < 20000) return "20";
   if (price < 50000) return "50";
   if (price < 100000) return "100";
+  if (price < 200000) return "200";
   return null;
 };
 
@@ -158,11 +160,11 @@ export default function App() {
           onValueChange={(v) => setFilter(v as Filter)}
           className="mt-4"
         >
-          <TabsList className="grid h-11 w-full grid-cols-4">
+          <TabsList className="grid h-11 w-full grid-cols-4 rounded-full bg-white p-1 text-sm">
             <TabsTrigger value="all">Semua</TabsTrigger>
             <TabsTrigger value="20">&lt; 20rb</TabsTrigger>
             <TabsTrigger value="50">&lt; 50rb</TabsTrigger>
-            <TabsTrigger value="100">&lt; 100rb</TabsTrigger>
+            <TabsTrigger value="200">&lt; 200rb</TabsTrigger>
           </TabsList>
         </Tabs>
 
