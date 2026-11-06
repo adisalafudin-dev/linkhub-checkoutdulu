@@ -36,6 +36,23 @@ const PRODUCTS: Product[] = [
       "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mtxccgz28vly84@resize_w450_nl.webp",
     shopeeUrl: "https://s.shopee.co.id/3LSALz7WgN",
   },
+
+  {
+    id: 2,
+    name: "TERMURAH PAYUNG MAGIC 3D LIPAT",
+    price: 25000,
+    image:
+      "https://down-id.img.susercontent.com/file/id-11134207-7ra0s-mck739czxprsfd@resize_w450_nl.webp",
+    shopeeUrl: "https://s.shopee.co.id/1gJwfL96Ox",
+  },
+  {
+    id: 3,
+    name: "NICEFUSE Smartwatch S12&11 PRO MAX",
+    price: 128000,
+    image:
+      "https://down-id.img.susercontent.com/file/id-11134207-822wr-mphr7wijqd4waf@resize_w450_nl.webp",
+    shopeeUrl: "https://s.shopee.co.id/7KyJPitlhz",
+  },
 ];
 
 /* ============================================================
