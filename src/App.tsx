@@ -56,7 +56,7 @@ const PRODUCTS: Product[] = [
   {
     id: 4,
     name: "LOUIS ARTHUR Tumbler Stainless Steel 304",
-    price: 6879,
+    price: 68079,
     image:
       "https://down-id.img.susercontent.com/file/sg-11134201-82585-mrv2peqyqi2o31.webp",
     shopeeUrl: "https://s.shopee.co.id/5fq5QdGayE",
