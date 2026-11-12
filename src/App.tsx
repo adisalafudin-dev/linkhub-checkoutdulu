@@ -1,17 +1,27 @@
 import { useMemo, useState } from "react";
-import {
-  Search,
-  ShoppingCart,
-  ExternalLink,
-  PackageSearch,
-} from "lucide-react";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Search,
+  ShoppingCart,
+  ExternalLink,
+  PackageSearch,
+  MoreVertical,
+  Share2,
+  Link2,
+  Check,
+} from "lucide-react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 /* ============================================================
    DATA PRODUK — EDIT DI SINI
@@ -61,6 +71,23 @@ const PRODUCTS: Product[] = [
       "https://down-id.img.susercontent.com/file/sg-11134201-82585-mrv2peqyqi2o31.webp",
     shopeeUrl: "https://s.shopee.co.id/5fq5QdGayE",
   },
+  {
+    id: 5,
+    name: "JAS HUJAN SETELAN PRIA WANITA BY SENWIL BAHAN PVC 0.25",
+    price: 41250,
+    image:
+      "https://down-id.img.susercontent.com/file/sg-11134201-23010-f52ia9eh7qmvf0_tn.webp",
+    shopeeUrl: "https://s.shopee.co.id/AAIYOtHyi1",
+  },
+
+  {
+    id: 6,
+    name: "JAS HUJAN JUMPSUIT ANAK LAKI-LAKI DAN PEREMPUAN ",
+    price: 56744,
+    image:
+      "https://down-id.img.susercontent.com/file/id-11134207-82251-mi71dn09f08z22_tn.webp",
+    shopeeUrl: "https://s.shopee.co.id/AAIYOwbnof",
+  },
 ];
 
 /* ============================================================
@@ -102,6 +129,70 @@ const formatRupiah = (n: number) =>
     currency: "IDR",
     maximumFractionDigits: 0,
   }).format(n);
+
+function ProductMenu({ product }: { product: Product }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(product.shopeeUrl);
+    } catch {
+      // fallback for browsers/contexts where the Clipboard API is blocked
+      const ta = document.createElement("textarea");
+      ta.value = product.shopeeUrl;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const share = async () => {
+    if (typeof navigator !== "undefined" && "share" in navigator) {
+      try {
+        await navigator.share({
+          title: product.name,
+          text: `${product.name} - ${formatRupiah(product.price)}`,
+          url: product.shopeeUrl,
+        });
+        return;
+      } catch (err) {
+        if ((err as DOMException).name === "AbortError") return; // user cancelled
+      }
+    }
+    copyLink(); // desktop / unsupported fallback
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        aria-label="Menu produk"
+        className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-foreground shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+      >
+        {copied ? (
+          <Check className="h-4 w-4 text-green-600" />
+        ) : (
+          <MoreVertical className="h-4 w-4" />
+        )}
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent align="end" className="w-40">
+        <DropdownMenuItem onClick={share}>
+          <Share2 className="mr-2 h-4 w-4" />
+          Share
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={copyLink}>
+          <Link2 className="mr-2 h-4 w-4" />
+          Copy link
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 /* ============================================================
    KOMPONEN
@@ -198,6 +289,7 @@ export default function App() {
                         {TIER_LABEL[tier]}
                       </Badge>
                     )}
+                    <ProductMenu product={product} />
                   </div>
 
                   <CardContent className="flex-1 space-y-1 p-3">
@@ -211,6 +303,7 @@ export default function App() {
 
                   <CardFooter className="p-3 pt-0">
                     <Button
+                      asChild
                       size="sm"
                       className="w-full bg-orange-500 text-white hover:bg-orange-600"
                     >
