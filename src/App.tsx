@@ -303,7 +303,6 @@ export default function App() {
 
                   <CardFooter className="p-3 pt-0">
                     <Button
-                      asChild
                       size="sm"
                       className="w-full bg-orange-500 text-white hover:bg-orange-600"
                     >
